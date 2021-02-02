@@ -1,0 +1,112 @@
+:root{
+  --c-blue-1:#3b5998;
+  --c-blue-2:#8b9dc3;
+  --c-blue-3:#4267B2;
+
+  --deg-mainBox-bg:135deg;
+
+  --r-mainBox:calc(var(--h-mainBox)*20/100);
+
+  --h-mainBox:300px;
+  --height-view-port:calc(var(--h-mainBox) * 10);
+
+  --animation-duration-mainBox:5s;
+
+}
+@font-face{
+  font-family:f;
+  src:url(../fonts/f.otf);
+}
+body{
+  margin:0px;padding:0px;
+  box-sizing:border-box;
+}
+body > div.mainBox{
+  overflow: hidden;
+  color:#ffffff;
+  width:var(--h-mainBox);height:var(--h-mainBox);
+  border-radius:var(--r-mainBox);
+  margin-top:calc(var(--h-mainBox)/-2);margin-left:calc(var(--h-mainBox)/-2);
+
+  position:absolute;
+  top:50%;left:50%;
+  animation:animateMainBox var(--animation-duration-mainBox) infinite alternate;
+}
+body > div.mainBox::after{
+  content: '';
+  width:100%;
+  height:var(--height-view-port);
+  background:linear-gradient(var(--deg-mainBox-bg),var(--c-blue-1) 0%,var(--c-blue-2) 50%, var(--c-blue-3) 100%);
+  position: relative;
+  display: block;
+  top:0px;left:0px;
+  animation:animateMainBoxBackground var(--animation-duration-mainBox) infinite alternate;
+}
+body > div.mainBox > div.font-f{
+
+  margin-top:calc((var(--h-mainBox)*80/100)*-5/9);
+  margin-left:calc((var(--h-mainBox)*80/100)*-2/30);
+
+  position:absolute;
+  z-index:2;
+  top:50%;left:50%;
+  font-size:calc(var(--h-mainBox)*100/100);
+  font-family:f;
+  animation:animatefont-f var(--animation-duration-mainBox) infinite alternate;
+}
+@keyframes animateMainBoxBackground{
+  0%{
+    top:0px;
+  }
+  50%{
+    top:calc(var(--h-mainBox) - var(--height-view-port));
+  }
+  100%{
+    top:0px;
+  }
+}
+@keyframes animateMainBox{
+  0%{
+    transform: scale(0);
+    border-radius: 100%;
+  }
+  3%{
+    transform: scale(1.5);
+  }
+  4%{
+    transform: scale(1);
+  }
+  11%{
+    transform: scale(1);
+  }
+  50%{
+    border-radius:var(--r-mainBox);
+  }
+  70%{
+
+  }
+  100%{
+    transform: scale(1);
+    border-radius: 0%;
+  }
+}
+@keyframes animatefont-f{
+  0%{
+    font-size:calc(var(--h-mainBox)*500/100);
+    transform: rotateY(0deg);
+  }
+  5%{
+    font-size:calc(var(--h-mainBox)*100/100);
+  }
+  90%{
+    transform: rotateY(0deg);
+  }
+  99%{
+    margin-left:calc((var(--h-mainBox)*80/100)*-2/30);
+  }
+  100%{
+    margin-left:calc((var(--h-mainBox)*80/100)*-10/30);
+    font-size:calc(var(--h-mainBox)*100/100);
+    transform: rotateY(180deg);
+  }
+}
