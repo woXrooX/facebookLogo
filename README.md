@@ -1,3 +1,3 @@
-# CSS training
+# CSS Training
 
 Facebook logo v1
